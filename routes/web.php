@@ -33,7 +33,11 @@ Route::get('/movies', function () {
     // Affiche les titres avec les années
     $output = '<h1>Liste des films</h1><ul>';
     foreach ($movies as $movie) {
-        $output .= '<li>' . $movie['title'] . ' (' . $movie['year'] . ')</li>';
+       // $output .= '<li>' . $movie['title'] . ' (' . $movie['year'] . ')</li>';
+       
+       //Liens vers les détails du film chaque élément de la liste en lien HTML qui pointe vers /movie/{id}.
+       $output .= '<li><a href="/movie/' . $movie['id'] . '">' . $movie['title'] . ' (' . $movie['year'] . ')</a></li>';
+
     }
     $output .= '</ul>';
 

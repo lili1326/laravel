@@ -100,6 +100,10 @@ Route::get('/movie/{id_film}', function ($id_film) {
  //   return '<h1>Hello '.$name.'</h1>';
 //});
 
-Route ::get('/greetings/',
+//Route ::get('/greetings/',
+	//[MonController::class, 'greetings']
+//);
+
+Route ::get('/greetings/{name}',
 	[MonController::class, 'greetings']
 );

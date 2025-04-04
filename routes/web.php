@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MonController;
+
 Route::get('/movies', function () {
     $movies = [
         1 => [
@@ -73,7 +75,9 @@ Route::get('/movie/{id_film}', function ($id_film) {
     ];
 
     if (!isset($movies[$id_film])) {
-        abort(404, "Film introuvable !");
+        //abort(404, "Film introuvable !");
+        // si l identifiant du film n existe pas redirige vers 404
+        abort_unless(isset($movies[$id_film]), 404);
     }
 
     $movie = $movies[$id_film];
@@ -88,10 +92,14 @@ Route::get('/movie/{id_film}', function ($id_film) {
     return $output;
 });
 
-Route::get('/', function () {
-    return '<h1>Hello laravel</h1>';
-});
+//Route::get('/', function () {
+ //   return '<h1>Hello laravel</h1>';
+//});
 
-Route::get('/{name}', function (string $name) {
-    return '<h1>Hello '.$name.'</h1>';
-});
+//Route::get('/{name}', function (string $name) {
+ //   return '<h1>Hello '.$name.'</h1>';
+//});
+
+Route ::get('/greetings/',
+	[MonController::class, 'greetings']
+);
